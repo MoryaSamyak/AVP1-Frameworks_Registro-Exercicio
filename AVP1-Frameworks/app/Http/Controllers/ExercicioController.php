@@ -46,4 +46,16 @@ class ExercicioController extends Controller
         }
 
     }
+
+    public function show($id)
+    {
+        $exercicio = Exercicio::find($id);
+
+        if (!$exercicio || $exercicio->user_id !== Auth::id()) {
+            return redirect()->route('exercicio.index')
+                ->with('error', 'Exercício não encontrado ou você não tem permissão para ver.');
+        }
+
+        return view('exercicio.show', ['exercicio' => $exercicio]);
+    }
 }
