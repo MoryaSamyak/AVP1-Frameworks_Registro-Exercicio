@@ -20,7 +20,35 @@
         @endif
 
         <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-            <div class="flex justify-end">
+
+            <!-- Formulário de Filtro -->
+            <form method="GET" action="{{ route('exercicio.index') }}" class="flex flex-wrap gap-2 items-end p-4">
+                <div>
+                    <label for="tipo" class="text-sm block">Exercício:</label>
+                    <input type="text" name="tipo" id="tipo" value="{{ request('tipo') }}" 
+                           class="border rounded px-2 py-1 text-sm">
+                </div>
+                <div>
+                    <label for="data_inicio" class="text-sm block">Data Início:</label>
+                    <input type="date" name="data_inicio" id="data_inicio" value="{{ request('data_inicio') }}" 
+                           class="border rounded px-2 py-1 text-sm">
+                </div>
+                <div>
+                    <label for="data_fim" class="text-sm block">Data Fim:</label>
+                    <input type="date" name="data_fim" id="data_fim" value="{{ request('data_fim') }}" 
+                           class="border rounded px-2 py-1 text-sm">
+                </div>
+                <div class="flex gap-2">
+                    <button type="submit" class="bg-indigo-500 text-white px-3 py-1 rounded text-sm">
+                        Filtrar
+                    </button>
+                    <a href="{{ route('exercicio.index') }}" class="bg-gray-500 text-white px-3 py-1 rounded text-sm">
+                        Limpar
+                    </a>
+                </div>
+            </form>
+
+            <div class="flex justify-end px-4">
                 <a href="{{ route('exercicio.create') }}" class="bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-2 px-4 m-4 rounded">
                     Adicionar
                 </a>
@@ -31,7 +59,6 @@
                     <tr>
                         <th scope="col" class="px-6 py-3 text-center">Exercicio</th>
                         <th scope="col" class="px-6 py-3 text-center">Duracao</th>
-                        <th scope="col" class="px-6 py-3 text-center">Categoria</th>
                         <th scope="col" class="px-6 py-3 text-center">Calorias</th>
                         <th scope="col" class="px-6 py-3 text-center">Data</th>
                         <th scope="col" class="px-6 py-3 text-center">Ações</th>
@@ -43,7 +70,6 @@
                         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                             <td class="px-6 py-4 text-center">{{ $exercicio->exercicio }}</td>
                             <td class="px-6 py-4 text-center">{{ $exercicio->duracao }}</td>
-                            <td class="px-6 py-4 text-center">--</td>
                             <td class="px-6 py-4 text-center">{{ $exercicio->calorias_gastas }}</td>
                             <td class="px-6 py-4 text-center">{{ \Carbon\Carbon::parse($exercicio->data)->format('d/m/Y') }}</td>
                             <td class="px-6 py-4 text-center">
