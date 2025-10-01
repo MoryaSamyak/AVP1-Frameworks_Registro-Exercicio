@@ -22,27 +22,27 @@
         <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
 
             <!-- Formulário de Filtro -->
-            <form method="GET" action="{{ route('exercicio.index') }}" class="flex flex-wrap gap-2 items-end p-4">
+            <form method="GET" action="{{ route('exercicio.index') }}" class="p-4 bg-gray-50 dark:bg-gray-700 rounded mb-4 grid grid-cols-1 sm:grid-cols-4 gap-4 items-end">
                 <div>
-                    <label for="tipo" class="text-sm block">Exercício:</label>
+                    <label for="tipo" class="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1">Exercício</label>
                     <input type="text" name="tipo" id="tipo" value="{{ request('tipo') }}" 
-                           class="border rounded px-2 py-1 text-sm">
+                           class="w-full border rounded px-2 py-1 text-sm">
                 </div>
                 <div>
-                    <label for="data_inicio" class="text-sm block">Data Início:</label>
+                    <label for="data_inicio" class="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1">Data Início</label>
                     <input type="date" name="data_inicio" id="data_inicio" value="{{ request('data_inicio') }}" 
-                           class="border rounded px-2 py-1 text-sm">
+                           class="w-full border rounded px-2 py-1 text-sm">
                 </div>
                 <div>
-                    <label for="data_fim" class="text-sm block">Data Fim:</label>
+                    <label for="data_fim" class="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1">Data Fim</label>
                     <input type="date" name="data_fim" id="data_fim" value="{{ request('data_fim') }}" 
-                           class="border rounded px-2 py-1 text-sm">
+                           class="w-full border rounded px-2 py-1 text-sm">
                 </div>
                 <div class="flex gap-2">
-                    <button type="submit" class="bg-indigo-500 text-white px-3 py-1 rounded text-sm">
+                    <button type="submit" class="bg-indigo-500 hover:bg-indigo-600 text-white px-4 py-2 rounded text-sm">
                         Filtrar
                     </button>
-                    <a href="{{ route('exercicio.index') }}" class="bg-gray-500 text-white px-3 py-1 rounded text-sm">
+                    <a href="{{ route('exercicio.index') }}" class="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded text-sm">
                         Limpar
                     </a>
                 </div>
