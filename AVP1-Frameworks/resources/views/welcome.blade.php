@@ -42,7 +42,7 @@
                             <a
                                 href="{{ route('register') }}"
                                 class="inline-block px-5 py-1.5 bg-white border border-[#565987] text-black rounded-sm text-sm leading-normal hover:bg-black hover:border-black hover:text-white dark:bg-[#eeeeec] dark:border-[#eeeeec] dark:text-[#1C1C1A] dark:hover:bg-white dark:hover:border-white dark:hover:text-black">
-                                Cadastar-se
+                                Cadastrar-se
                             </a>
                         @endif
                     @endauth
