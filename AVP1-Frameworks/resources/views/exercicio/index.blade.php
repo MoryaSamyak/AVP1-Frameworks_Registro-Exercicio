@@ -21,7 +21,6 @@
 
         <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
 
-            <!-- Formulário de Filtro -->
             <form method="GET" action="{{ route('exercicio.index') }}" class="p-4 bg-gray-50 dark:bg-gray-700 rounded mb-4 grid grid-cols-1 sm:grid-cols-4 gap-4 items-end">
                 <div>
                     <label for="tipo" class="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1">Exercício</label>
