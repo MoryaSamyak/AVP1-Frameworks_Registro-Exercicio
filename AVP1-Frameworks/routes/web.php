@@ -7,7 +7,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
+Route::get('/exercicios', [App\Http\Controllers\ExercicioController::class, 'index'])
+    ->middleware(['auth', 'verified'])
+    ->name('exercicios');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
