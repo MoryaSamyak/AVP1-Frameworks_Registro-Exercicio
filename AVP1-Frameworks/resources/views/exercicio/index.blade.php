@@ -40,12 +40,33 @@
 
                 <tbody>
                     @foreach($exercicios as $exercicio)
-                        <tr>
+                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                             <td class="px-6 py-4 text-center">{{ $exercicio->exercicio }}</td>
                             <td class="px-6 py-4 text-center">{{ $exercicio->duracao }}</td>
                             <td class="px-6 py-4 text-center">--</td>
                             <td class="px-6 py-4 text-center">{{ $exercicio->calorias_gastas }}</td>
-                            <td class="px-6 py-4 text-center">{{ $exercicio->data }}</td>
+                            <td class="px-6 py-4 text-center">{{ \Carbon\Carbon::parse($exercicio->data)->format('d/m/Y') }}</td>
+                            <td class="px-6 py-4 text-center">
+                                <div class="flex justify-center gap-2">
+                                    <a href="{{ route('exercicio.show', $exercicio->id) }}" 
+                                       class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-1 px-3 rounded text-xs">
+                                        Visualizar
+                                    </a>
+                                    <a href="{{ route('exercicio.edit', $exercicio->id) }}" 
+                                       class="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-1 px-3 rounded text-xs">
+                                        Editar
+                                    </a>
+                                    <form action="{{ route('exercicio.destroy', $exercicio->id) }}" method="POST" 
+                                          onsubmit="return confirm('Tem certeza que deseja excluir este exercício?');">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" 
+                                                class="bg-red-500 hover:bg-red-600 text-white font-semibold py-1 px-3 rounded text-xs">
+                                            Deletar
+                                        </button>
+                                    </form>
+                                </div>
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>
